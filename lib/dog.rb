@@ -40,6 +40,17 @@ class Dog
     new_dog
   end
   
+  def self.new_from_db(values)
+    attributes = {
+      :id => values[0],
+      :name => values[1],
+      :breed => values[2]
+    }
+    
+    DB[:conn].execute(attributes)
+  end
+    
+  
   
   
 end
