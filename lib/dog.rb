@@ -46,7 +46,7 @@ class Dog
       :name => values[1],
       :breed => values[2]
     }
-    result = (DB[:conn].execute(attributes)
+    result = DB[:conn].execute(attributes)
     Dog.new(result)
   end
     
