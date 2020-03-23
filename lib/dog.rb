@@ -47,7 +47,7 @@ class Dog
       :breed => values[2]
     }
     result = DB[:conn].execute(attributes)
-    Dog.new(result)
+    self.new(result)
   end
     
   
