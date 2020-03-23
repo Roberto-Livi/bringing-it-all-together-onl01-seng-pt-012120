@@ -43,11 +43,11 @@ class Dog
     new_entry.save
   end
   
-  def self.new_from_db(dog)
+  def self.new_from_db(values)
     attributes = {
-      :id => dog[0],
-      :name => dog[1],
-      :breed => dog[2]
+      :id => values[0],
+      :name => values[1],
+      :breed => values[2]
     }
     self.new(attributes)
   end
