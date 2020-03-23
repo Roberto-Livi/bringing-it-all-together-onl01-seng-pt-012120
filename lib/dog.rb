@@ -1,79 +1,47 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class Dog
+class Dog
   
-#   attr_accessor :id, :name, :breed
+  attr_accessor :id, :name, :breed
   
-#   def initialize(attributes)
-#     attributes.each do |key, value| 
-#       self.send(("#{key}="), value)
-#     end
-#     self.id ||= nil
-#   end
+  def initialize(attributes)
+    attributes.each do |key, value| 
+      self.send(("#{key}="), value)
+    end
+    self.id ||= nil
+  end
   
-#   def self.create_table
-#     sql = <<-SQL
-#     CREATE TABLE dogs(
-#     id INTEGER PRIMARY KEY,
-#     name TEXT,
-#     breed TEXT
-#     );
-#     SQL
+  def self.create_table
+    sql = <<-SQL
+    CREATE TABLE dogs(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    breed TEXT
+    );
+    SQL
   
-#   DB[:conn].execute(sql)
-#   end
+  DB[:conn].execute(sql)
+  end
   
-#   def self.drop_table
-#     sql = "DROP TABLE dogs;"
-#     DB[:conn].execute(sql)
-#   end
+  def self.drop_table
+    sql = "DROP TABLE dogs;"
+    DB[:conn].execute(sql)
+  end
   
-#   def save
-#     if self.id
-#       self.update
-#     else
-#     sql = "INSERT INTO dogs(name, breed) VALUES (?, ?);"
+  def save
+    if self.id
+      self.update
+    else
+    sql = "INSERT INTO dogs(name, breed) VALUES (?, ?);"
     
-#     DB[:conn].execute(sql, self.name, self.breed)
-#     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
-#     self
-#     end
-#   end
+    DB[:conn].execute(sql, self.name, self.breed)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+    self
+    end
+  end
   
-#   def self.create(attributes_hash)
-#     new_entry = Dog.new(attributes_hash)
-#     new_entry.save
-#   end
+  def self.create(attributes_hash)
+    new_entry = Dog.new(attributes_hash)
+    new_entry.save
+  end
   
 #   def self.new_from_db(dog)
 #     attributes = {
