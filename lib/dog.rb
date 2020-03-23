@@ -54,7 +54,7 @@ class Dog
     result = DB[:conn].execute(sql, id)[0]
     attributes = {
       :id => result[0],
-      :name => result[1].
+      :name => result[1],
       :breed => result[2]
     }
     self.new(attributes)
